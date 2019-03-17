@@ -1,4 +1,3 @@
-
 // CREATE TABLE
 // using d3 to select the table
 var tBody = d3.select('.table>tbody');
@@ -16,7 +15,7 @@ data.forEach((ufo) => {
 
 //   SEARCH THROUGH DATE/TIME COLUMN AND RETURN RESULTS THAT MATCH USER INPUT
 // Use d3 to select the filter table button
-  var ufofilter = d3.select(".btn-default");
+  var ufofilter = d3.select(".btn");
 
   ufofilter.on("click", function() {
     
@@ -25,7 +24,6 @@ data.forEach((ufo) => {
   
     // Select the input element and get the raw HTML node
     
-  
     // Get the value property of the input element
     
       var filterElement = d3.select("#datetime");
@@ -82,4 +80,3 @@ data.forEach((ufo) => {
   });
     
   });
-  
