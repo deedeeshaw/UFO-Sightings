@@ -16,21 +16,51 @@ data.forEach((ufo) => {
 
 //   SEARCH THROUGH DATE/TIME COLUMN AND RETURN RESULTS THAT MATCH USER INPUT
 // Use d3 to select the filter table button
-  var filter = d3.select(".btn-default");
+  var ufofilter = d3.select(".btn-default");
 
-  filter.on("click", function() {
+  ufofilter.on("click", function() {
     
     // Prevent the page from refreshing
     d3.event.preventDefault();
   
     // Select the input element and get the raw HTML node
-    var filterElement = d3.select("#datetime");
+    
   
     // Get the value property of the input element
-    var filterValue = filterElement.property("value");
-  
-    var uFilter = data.filter(ufo => ufo.datetime === filterValue);
- 
+    
+      var filterElement = d3.select("#datetime");
+      var datetime = filterElement.property("value");
+        if (datetime) {
+          var uFilter = data.filter(ufo => ufo.datetime === datetime);
+    };
+
+    console.log(uFilter);
+    
+      var filterElement = d3.select("#city");
+      var city = filterElement.property("value");
+        if (city){
+        if (city && datetime) {
+          uFilter = uFilter.filter(ufo => ufo.city === city);
+        }
+        else {
+          uFilter = data.filter(ufo => ufo.city === city);
+        };
+      };
+
+    console.log(uFilter);
+
+      var filterElement = d3.select("#shape");
+      var shape = filterElement.property("value");
+      
+      if (shape) {
+        if (shape && datetime || city) {
+         uFilter = uFilter.filter(ufo => ufo.shape === shape);
+        }
+        else {
+          uFilter = data.filter(ufo => ufo.shape === shape);
+        };
+      };
+
     console.log(uFilter);
 
     d3.selectAll('td').remove()
